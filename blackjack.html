@@ -11,24 +11,24 @@
     
     <title>Blackjack</title>
 </head>
-<body class="bg-dark text-white">
-<div class="bg-dark text-white" id="wrapper">
+<body class="bg-dark text-white" onload="reset();">
+<div id="wrapper">
     <h1>Blackjack</h1>
-<br>
 <table>
     <tr>
         <td>
-            <div class="alert alert-light" id="dHand">Dealer</div>
+            <h4>Dealer</h4>
+            <div class="alert alert-light" id="dHand">Hand</div>
         </td>
     </tr>
-    <tr><td><div id="dHandVal"></td></tr>
-
+    <tr><td><div id="dHandVal">0</td></tr>
     <tr>
         <td>
-            <div class="alert alert-light" id="pHand">Player</div>
+            <h4>Player</h4>
+            <div class="alert alert-light" id="pHand">Hand</div>
         </td>
     </tr>
-    <tr><td><div id="pHandVal"></td></tr>
+    <tr><td><div id="pHandVal">0</td></tr>
 
 </table>
 
@@ -47,6 +47,7 @@
 </table>
 
 <br><br><br>
+<div class="alert alert-success" id="test">Press deal to start round</div>
 
 <table>
     <tr>
@@ -58,16 +59,16 @@
         </td>
     </tr>
     <tr>
-        <td><label for="bet">Bet amount</label></td>
+        <td><label for="bet">Bet amount:</label></td>
 
         <td><input type="text" id="bet" name="Bet amount"></td>
         <td></td>
     </tr>
 </table>
 
-<div>Bank: </div>
-<div id="bank">1000</div>
-<div id="test"></div>
+<h4>Balance: </h4>
+<h4 id="bank">1000 EC</h4>
+
 
 </div>
 </body>

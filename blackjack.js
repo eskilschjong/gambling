@@ -5,14 +5,15 @@ function Card (suit, rank) {
 const deck = [];
 
 function reset(){
-    document.getElementById("dHand").innerHTML = "Dealer";
-    document.getElementById("pHand").innerHTML = "Player";
+    document.getElementById("dHand").innerHTML = "Hand";
+    document.getElementById("pHand").innerHTML = "Hand";
 
-    document.getElementById("dHandVal").innerHTML = "";
-    document.getElementById("pHandVal").innerHTML = "";
+    document.getElementById("dHandVal").innerHTML = "0";
+    document.getElementById("pHandVal").innerHTML = "0";
     cardN = 0;
     bank = 1000;
-    document.getElementById("bank").innerHTML = bank;
+    document.getElementById("bank").innerHTML = bank + " EC";
+    document.getElementById("test").innerHTML = "Press deal to start round";
 
 
 
@@ -88,14 +89,14 @@ function bet(){
     getAmount = $("#bet").val();
     betAmount += +getAmount;
     bank += -+getAmount;
-    document.getElementById("bank").innerHTML = bank;
+    document.getElementById("bank").innerHTML = bank + " EC";
 }
 
 function deal(){
     roundActive = true;
     betAmount = 0;
     bet();
-    document.getElementById("test").innerHTML = "";
+    document.getElementById("test").innerHTML = "Round in progress";
     dHand = "";
     pHand = "";
     outHand = "";
@@ -200,22 +201,22 @@ function results() {
     if (dHandVal === pHandVal || dHandVal === aceHand) {
         document.getElementById("test").innerHTML = "Push!";
         bank += +betAmount;
-        document.getElementById("bank").innerHTML = bank;
+        document.getElementById("bank").innerHTML = bank + " EC";
     }
     
     else if ((dHandVal > 21 || dHandVal < pHandVal) && (playerBust === false)) {
-        document.getElementById("test").innerHTML = "You win!";
+        document.getElementById("test").innerHTML = "You won! " + betAmount + " eskil-coins added to balance!";
             bank += +betAmount + +betAmount;
             if (blackjack === true){
                 bank += +betAmount/2;
             }
-            document.getElementById("bank").innerHTML = bank;
+            document.getElementById("bank").innerHTML = bank + " EC";
 
             
     }
 
     else if (dHandVal > pHandVal || playerBust === true) {
-        document.getElementById("test").innerHTML = "You lose!";
+        document.getElementById("test").innerHTML = "You lose! " + betAmount + " eskil-coins removed from balance!";
     }
     throw new Error("Program has finsished");
 }

@@ -1,12 +1,55 @@
 #wrapper
 {
- width:500px;
- height:500px;
+ width:25%;
+ height:100%;
  margin:0 auto;
- background:#f7f7f7;
  position:absolute;
- left:50%;
- top:50%;
- margin-left:-250px;
- margin-top:-250px;
+ left:35%;
+ top:10%;
+
+}
+@media only screen and (max-width: 1000px) {
+    #wrapper {
+        width:80%;
+        left: 5%;
+    }
+  }
+#dHand
+{
+    margin-bottom: 0;
+    color: black;
+    font-weight: bold;
+}
+
+#pHand
+{
+    margin-bottom: 0;
+    color: black;
+    font-weight: bold;
+}
+
+#dHandVal
+{
+    margin-bottom: 5vh;
+    font-weight: bold;
+}
+
+#pHandVal
+{
+    margin-bottom: 5vh;
+    font-weight: bold;
+}
+body {
+    font-weight: bold;
+}
+
+#bet {
+    margin-top: 4vh;
+    margin-bottom: 4vh;
+    margin-left: 2vh;
+}
+
+.btn {
+    font-weight: bold;
+    margin-right: 2vh;
 }
