@@ -59,6 +59,8 @@ function shuffle(){
       shuffleDeck(deck);
 }
 
+let roundActive = false;
+
 let cardN = 0;
 let bank = 1000;
 
@@ -78,6 +80,7 @@ let betAmount = 0;
 let getAmount = 0;
 
 let blackjack = false;
+let playerBust = true;
 
 let dHiddencard = true;
 
@@ -89,6 +92,7 @@ function bet(){
 }
 
 function deal(){
+    roundActive = true;
     betAmount = 0;
     bet();
     document.getElementById("test").innerHTML = "";
@@ -105,6 +109,7 @@ function deal(){
     dAceHand = 0;
 
     blackjack = false;
+    playerBust = false;
 
     dHiddencard = true;
 
@@ -129,24 +134,35 @@ function deal(){
 }
 
 function hit() {
+    if (roundActive === true) {
     drawPlayer();
-    if (pHandVal === 21 || aceHand === 21){
-        document.getElementById("dHandVal").innerHTML = "21";
-        stand();
+        if (pHandVal === 21 || aceHand === 21){
+            document.getElementById("dHandVal").innerHTML = "21";
+            stand();
+            }
+    }
+    else {
+        document.getElementById("test").innerHTML = "Press deal to start round";
     }
 }
 
 
 function double() {
+    if (roundActive === true){
     bet();
 
     hit();
     stand();
     document.getElementById("bank").innerHTML = bank;
+    }
+    else {
+        document.getElementById("test").innerHTML = "Press deal to start round";
+    }
 }
 
 function stand() {
-    if (aceHand < 22) {
+    if (roundActive === true){
+    if (aceHand < 22 && ace === true) {
         pHandVal = aceHand;
         document.getElementById("pHandVal").innerHTML = pHandVal;
         if (blackjack === true){
@@ -166,10 +182,16 @@ function stand() {
     }
     }
     results();
+    
+}
+else {
+    document.getElementById("test").innerHTML = "Press deal to start round";
+}
 }
 
 
 function results() {
+    roundActive = false;
     document.getElementById("dHandVal").innerHTML = dHandVal;
     if (dHandVal > 21){
         document.getElementById("dHandVal").innerHTML = "BUST";
@@ -181,7 +203,7 @@ function results() {
         document.getElementById("bank").innerHTML = bank;
     }
     
-    else if (dHandVal > 21 || dHandVal < pHandVal) {
+    else if ((dHandVal > 21 || dHandVal < pHandVal) && (playerBust === false)) {
         document.getElementById("test").innerHTML = "You win!";
             bank += +betAmount + +betAmount;
             if (blackjack === true){
@@ -192,7 +214,7 @@ function results() {
             
     }
 
-    else if (dHandVal > pHandVal) {
+    else if (dHandVal > pHandVal || playerBust === true) {
         document.getElementById("test").innerHTML = "You lose!";
     }
     throw new Error("Program has finsished");
@@ -302,9 +324,11 @@ function drawDealer(){
             aceHand += deck[cardN].rank;
         }
         if (pHandVal > 21){
+            playerBust = true;
             document.getElementById("pHandVal").innerHTML = "BUST";
             pHandVal = 0;
             aceHand = 0;
+            stand();
         }
         else if (ace === false || aceHand > 21) {
         ace = false;
