@@ -10,7 +10,6 @@
 }
 @media only screen and (max-width: 1000px) {
     #wrapper {
-        width:80%;
         left: 5%;
     }
   }
