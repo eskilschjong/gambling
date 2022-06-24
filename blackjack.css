@@ -8,11 +8,7 @@
  top:10%;
 
 }
-@media only screen and (max-width: 1000px) {
-    #wrapper {
-        left: 5%;
-    }
-  }
+
 #dHand
 {
     margin-bottom: 0;
@@ -51,4 +47,30 @@ body {
 .btn {
     font-weight: bold;
     margin-right: 2vh;
+    margin-bottom: 2vh;
 }
+
+@media only screen and (max-width: 1000px) {
+    #wrapper {
+        width:80%;
+        margin:0 auto;
+        position:absolute;
+        left:5%;
+        top:0%;
+    }
+    h1 {
+        margin-top: 2vh;
+    }
+    #test {
+        height: 10%;
+    }
+    #dHandVal
+    {
+    margin-bottom: 3vh;
+    }
+
+    #pHandVal
+    {
+    margin-bottom: 1vh;
+    }
+  }
