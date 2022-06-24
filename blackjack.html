@@ -1,0 +1,71 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <script src="blackjack.js"></script>
+    <script src="https://code.jquery.com/jquery-3.6.0.js"></script>
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@4.6.1/dist/css/bootstrap.min.css"
+          integrity="sha384-zCbKRCUGaJDkqS1kPbPd7TveP5iyJE0EjAuZQTgFLD2ylzuqKfdKlfG/eSrtxUkn" crossorigin="anonymous">
+    <meta charset="UTF-8">
+    <title>Scammy funtime multiplier time</title>
+</head>
+<body class="bg-dark text-white">
+
+    <h1>Blackjack</h1>
+<br>
+<table>
+    <tr>
+        <td>
+            <div class="alert alert-light" id="dHand">Dealer</div>
+        </td>
+    </tr>
+    <tr><td><div id="dHandVal"></td></tr>
+
+    <tr>
+        <td>
+            <div class="alert alert-light" id="pHand">Player</div>
+        </td>
+    </tr>
+    <tr><td><div id="pHandVal"></td></tr>
+
+</table>
+
+<table>
+    <tr>
+        <td>
+            <button class="btn btn-danger" onclick="stand()">Stand</button>
+        </td>
+        <td>
+            <button class="btn btn-success" onclick="hit()">Hit</button>
+        </td>
+        <td>
+            <button class="btn" style="background-color: blueviolet; color: white;" onclick="double()">Double</button>
+        </td>
+    </tr>
+</table>
+
+<br><br><br>
+
+<table>
+    <tr>
+        <td>
+            <button class="btn btn-danger" onclick="reset()">Reset</button>
+        </td>
+        <td>
+            <button type="submit" class="btn btn-success" onclick="deal()">Deal</button>
+        </td>
+    </tr>
+    <tr>
+        <td><label for="bet">Bet amount</label></td>
+
+        <td><input type="text" id="bet" name="Bet amount"></td>
+        <td></td>
+    </tr>
+</table>
+
+<div>Bank: </div>
+<div id="bank">1000</div>
+<div id="test"></div>
+
+</body>
+</html>

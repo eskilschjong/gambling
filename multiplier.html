@@ -1,0 +1,99 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <script src="multiplier.js"></script>
+    <script src="https://code.jquery.com/jquery-3.6.0.js"></script>
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@4.6.1/dist/css/bootstrap.min.css"
+          integrity="sha384-zCbKRCUGaJDkqS1kPbPd7TveP5iyJE0EjAuZQTgFLD2ylzuqKfdKlfG/eSrtxUkn" crossorigin="anonymous">
+    <meta charset="UTF-8">
+    <title>Scammy funtime multiplier time</title>
+</head>
+<body class="bg-dark">
+<div class="container bg-dark text-white">
+    <br><br><br><br><br><br><br><br><br>
+    <h1>Scammy funtime multiplier time</h1>
+
+    <table class="table table-dark">
+
+        <tr>
+            <td><label for="bet">Bet amount</label></td>
+
+            <td><input type="text" id="bet" name="Bet amount"></td>
+            <td></td>
+        </tr>
+
+        <tr>
+            <td>
+                <h2 class="alert" style="color:red;" id="multi">1X</h2>
+            </td>
+
+            <td>
+                <h2 class="alert" style="color:green;" id="multiBet"></h2>
+            </td>
+
+            <td>
+                <h2 class="alert" style="color:goldenrod;" id="prize"></h2>
+            </td>
+
+        </tr>
+
+    </table>
+
+    <table class="table table-dark">
+
+        <tr>
+            <td><div class="alert alert-success" style="background-color:antiquewhite; color: black; font-weight: bold;" id="box1">1x</div></td>
+
+            <td><div class="alert alert-success" style="background-color:antiquewhite; color: black; font-weight: bold;" id="box2">1x</div></td>
+
+            <td><div class="alert alert-success" style="background-color:antiquewhite; color: black; font-weight: bold;" id="box3">1x</div></td>
+
+            <td><div class="alert alert-success" style="background-color:antiquewhite; color: black; font-weight: bold;" id="box4">1x</div></td>
+
+            <td><div class="alert alert-success" style="background-color:antiquewhite; color: black; font-weight: bold;" id="box5">1x</div></td>
+
+            <td><div class="alert alert-success" style="background-color:antiquewhite; color: black; font-weight: bold;" id="box6">1x</div></td>
+
+            <td><div class="alert alert-success" style="background-color:antiquewhite; color: black; font-weight: bold;" id="box7">1x</div></td>
+
+            <td><div class="alert alert-success" style="background-color:black; color: orangered; font-weight: bold;" id="death">DEATH</div></td>
+
+        </tr>
+
+        <tr>
+            <td><div style="background-color:greenyellow; color: greenyellow; border-radius: 25px; text-align: center;" id="point1"></div></td>
+
+            <td><div style="background-color:greenyellow; color: greenyellow; border-radius: 25px; text-align: center;" id="point2"></div></td>
+
+            <td><div style="background-color:greenyellow; color: greenyellow; border-radius: 25px; text-align: center;" id="point3"></div></td>
+
+            <td><div style="background-color:greenyellow; color: greenyellow; border-radius: 25px; text-align: center;" id="point4"></div></td>
+
+            <td><div style="background-color:greenyellow; color: greenyellow; border-radius: 25px; text-align: center;" id="point5"></div></td>
+
+            <td><div style="background-color:greenyellow; color: greenyellow; border-radius: 25px; text-align: center;" id="point6"></div></td>
+
+            <td><div style="background-color:greenyellow; color: greenyellow; border-radius: 25px; text-align: center;" id="point7"></div></td>
+
+            <td><div style="background-color:orangered; color: orangered; border-radius: 25px; text-align: center;" id="pointDeath"></div></td>
+
+        </tr>
+
+
+    </table>
+
+    <br>
+    <input type="submit" class="btn btn-success" value="Spin" onclick="spin()">
+    <br><br>
+
+</div>
+<div class="container bg-dark text-white">
+
+
+    <button class="btn btn-danger" value="Slett alle billettene" onclick="restart()">Restart</button>
+</div>
+<br><br><br><br><br><br>
+
+</body>
+</html>
