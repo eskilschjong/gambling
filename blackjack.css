@@ -1,3 +1,8 @@
+html {
+    font-size:16px;
+    margin: 0;
+  }
+
 #wrapper
 {
  width:25%;
@@ -5,16 +10,58 @@
  margin:0 auto;
  position:absolute;
  left:35%;
- top:10%;
+ top:0%;
+ 
 
 }
 
-#dHand
-{
+.flex-container {
+    display: flex;
+    flex-wrap: wrap;
     margin-bottom: 0;
     color: black;
     font-weight: bold;
-}
+  }
+  
+  .flex-container > div {
+    background:  antiquewhite;
+    color: black;
+    padding: 1vh;
+    border-radius: 10px;
+    width: 5vh;
+    height: 5vh;
+    margin-right: 0.8vh;
+  }
+
+  .flex-container > h4 {
+    background:  antiquewhite;
+    color: red;
+    padding: 1vh;
+    border-radius: 10px;
+    width: 5vh;
+    height: 5vh;
+    margin-top: 0;
+    margin-bottom: 0;
+    margin-right: 0.8vh;
+  }
+
+  .flex-container > h5 {
+    background:  black;
+    color: antiquewhite;
+    text-align: center;
+    font-size: 1.8rem;
+    padding: 1vh;
+    border-radius: 10px;
+    width: 5vh;
+    height: 5vh;
+    margin-top: 0;
+    margin-bottom: 0;
+    margin-right: 0.8vh;
+    -webkit-box-shadow:inset 0px 0px 0px 4px antiquewhite;
+    -moz-box-shadow:inset 0px 0px 0px 4px antiquewhite;
+    box-shadow:inset 0px 0px 0px 4px antiquewhite;
+  }
+
 
 #pHand
 {
@@ -34,9 +81,45 @@
     margin-bottom: 5vh;
     font-weight: bold;
 }
+
 body {
+    margin: 0;
+    color: white;
     font-weight: bold;
 }
+
+.background {
+    background: rgb(0,140,5);
+    background: radial-gradient(circle, rgba(0,140,5,1) 0%, rgba(0,90,3,1) 37%, rgba(0,32,1,1) 100%);
+    background: url(pokerTable.jpeg) no-repeat center center fixed; 
+    -webkit-background-size: cover;
+    -moz-background-size: cover;
+    -o-background-size: cover;
+    background-size: cover;
+    min-height: 100vh;
+    width: 100%;
+    position: fixed;
+}
+
+.backgroundOpacity {
+    background: rgba(0, 0, 0, 0.0);
+    background: linear-gradient(0deg, rgba(0,0,0,0) 50%, rgba(0,0,0,0.9) 100%);
+    height: 100vh;
+    width: 100%;
+    position: fixed;
+}
+
+.logo {
+    width: 100%;
+    height: auto;
+    margin: 0;
+}
+
+h2 {
+    margin: 0;
+}
+
+
 
 #bet {
     margin-top: 4vh;
@@ -44,13 +127,40 @@ body {
     margin-left: 2vh;
 }
 
+.alert {
+    background: antiquewhite;
+    color: black;
+    padding: 1vh;
+    border-radius: 10px;
+}
+
+.message {
+    background: rgb(255, 182, 98);
+    color: rgb(128, 68, 0);
+    margin-bottom: 2vh;
+    
+}
+
+.balance {
+    background: rgb(255, 252, 159);
+    color: rgb(126, 124, 0);
+    
+}
+
 .btn {
+    background: red;
+    color: white;
+    border: 0px solid black;
+    padding: 1em;
+    border-radius: 10px;
+    text-transform: uppercase;
     font-weight: bold;
+    font-size: 1rem;
     margin-right: 2vh;
     margin-bottom: 2vh;
 }
 
-@media only screen and (max-width: 1000px) {
+@media only screen and (max-width: 1200px) {
     #wrapper {
         width:80%;
         margin:0 auto;
@@ -58,11 +168,15 @@ body {
         left:5%;
         top:0%;
     }
+    body {
+        background: rgb(0,90,3);
+        background: linear-gradient(90deg, rgba(0,90,3,1) 0%, rgba(0,135,4,1) 30%, rgba(0,145,4,1) 50%, rgba(0,131,4,1) 70%, rgba(0,90,3,1) 100%);
+    }
     h1 {
         margin-top: 2vh;
     }
     #test {
-        height: 10%;
+        height: 10vw;
     }
     #dHandVal
     {

@@ -5,8 +5,8 @@ function Card (suit, rank) {
 const deck = [];
 
 function reset(){
-    document.getElementById("dHand").innerHTML = "Hand";
-    document.getElementById("pHand").innerHTML = "Hand";
+    document.getElementById("dHand").innerHTML = "<div></div>";
+    document.getElementById("pHand").innerHTML = "<div></div>";
 
     document.getElementById("dHandVal").innerHTML = "0";
     document.getElementById("pHandVal").innerHTML = "0";
@@ -120,7 +120,8 @@ function deal(){
     drawDealer();
     
     printHand();
-    let hiddenHand = "?, " + outHand;
+    let hiddenHand = "<h5>?</h5>" + outHand;
+
     document.getElementById("dHand").innerHTML = hiddenHand;
     document.getElementById("dHandVal").innerHTML = deck[cardN].rank;
 
@@ -199,7 +200,7 @@ function results() {
     }
     
     if (dHandVal === pHandVal || dHandVal === aceHand) {
-        document.getElementById("test").innerHTML = "Push!";
+        document.getElementById("test").innerHTML = "Push! Bet refunded!";
         bank += +betAmount;
         document.getElementById("bank").innerHTML = bank + " EC";
     }
@@ -236,21 +237,27 @@ function printHand() {
         }
 
         if (deck[cardN].rank === 1){
-            outHand += "A" + ", ";
+            outHand += "A";
             }
         else if (deck[cardN].rank < 11){
-            outHand += deck[cardN].rank + ", ";
+            outHand += deck[cardN].rank;
             }
             else if (deck[cardN].rank === 11){
-                outHand += "J" + ", ";
+                outHand += "J";
                 }
                 else if (deck[cardN].rank === 12){
-                    outHand += "Q" + ", ";
+                    outHand += "Q";
                     }
                     else if (deck[cardN].rank === 13){
-                        outHand += "K" + ", ";
+                        outHand += "K";
                         }
-        
+
+                if (deck[cardN].suit === 2 || deck[cardN].suit === 3) {
+                    outHand = "<h4>" + outHand + "</h4>";
+                } else {
+                    outHand = "<div>" + outHand + "</div>";
+                }
+    
 }       
 
 
