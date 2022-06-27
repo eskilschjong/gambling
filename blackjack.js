@@ -12,11 +12,21 @@ function reset(){
     document.getElementById("pHandVal").innerHTML = "0";
     cardN = 0;
     bank = 1000;
+    roundActive = false;
     document.getElementById("bank").innerHTML = bank + " EC";
     document.getElementById("test").innerHTML = "Press deal to start round";
 
+    document.getElementById("deal").style.backgroundColor = "rgb(9, 186, 0)"
+    document.getElementById("stand").style.backgroundColor = "#6e6e6e";
+    document.getElementById("hit").style.backgroundColor = "#6e6e6e";
+    document.getElementById("double").style.backgroundColor = "#6e6e6e";
 
+    newDeck();
+    shuffle(deck);
+}
 
+function newDeck(){
+    cardN = 0;
     deckSize = 52;
     suitSize = deckSize/4;
     let counter = 0;
@@ -33,18 +43,6 @@ function reset(){
         counter++;
         }
     }
-
-
-    shuffle(deck);
-
-
-    let out = "";
-
-    for(let i = 0; i < deckSize; i++) {
-        out+= deck[i].suit + " " + deck[i].rank + ",    ";
-    }
-
-
 }
 
 function shuffle(){
@@ -88,12 +86,23 @@ let dHiddencard = true;
 function bet(){
     getAmount = $("#bet").val();
     betAmount += +getAmount;
+    if (betAmount > bank) {
+        document.getElementById("test").innerHTML = "Your bet can not be higher than your total balance";
+        roundActive = false;
+        throw new Error("Bet value exceeds bank value.");
+    }
     bank += -+getAmount;
     document.getElementById("bank").innerHTML = bank + " EC";
 }
 
 function deal(){
+    if (roundActive === false) {
     roundActive = true;
+    document.getElementById("deal").style.backgroundColor = "#6e6e6e";
+    document.getElementById("stand").style.backgroundColor = "rgb(170, 0, 0)";
+    document.getElementById("hit").style.backgroundColor = "rgb(9, 186, 0)";
+    document.getElementById("double").style.backgroundColor = "blueviolet";
+
     betAmount = 0;
     bet();
     document.getElementById("test").innerHTML = "Round in progress";
@@ -133,6 +142,7 @@ function deal(){
         blackjack = true;
         stand();
     }
+}
 }
 
 function hit() {
@@ -199,7 +209,7 @@ function results() {
         document.getElementById("dHandVal").innerHTML = "BUST";
     }
     
-    if (dHandVal === pHandVal || dHandVal === aceHand) {
+    if (dHandVal === pHandVal) {
         document.getElementById("test").innerHTML = "Push! Bet refunded!";
         bank += +betAmount;
         document.getElementById("bank").innerHTML = bank + " EC";
@@ -207,9 +217,14 @@ function results() {
     
     else if ((dHandVal > 21 || dHandVal < pHandVal) && (playerBust === false)) {
         document.getElementById("test").innerHTML = "You won! " + betAmount + " eskil-coins added to balance!";
-            bank += +betAmount + +betAmount;
-            if (blackjack === true){
+        bank += +betAmount + +betAmount;
+            if (blackjack === false){
+            
+            }
+            else {
                 bank += +betAmount/2;
+                let blackjackPrize = +betAmount + +betAmount/2;
+                document.getElementById("test").innerHTML = "BLACKJACK! " + blackjackPrize + " eskil-coins added to balance!";
             }
             document.getElementById("bank").innerHTML = bank + " EC";
 
@@ -219,6 +234,10 @@ function results() {
     else if (dHandVal > pHandVal || playerBust === true) {
         document.getElementById("test").innerHTML = "You lose! " + betAmount + " eskil-coins removed from balance!";
     }
+    document.getElementById("deal").style.backgroundColor = "rgb(9, 186, 0)"
+    document.getElementById("stand").style.backgroundColor = "#6e6e6e";
+    document.getElementById("hit").style.backgroundColor = "#6e6e6e";
+    document.getElementById("double").style.backgroundColor = "#6e6e6e";
     throw new Error("Program has finsished");
 }
 
@@ -262,6 +281,9 @@ function printHand() {
 
 
 function drawDealer(){
+    if (cardN === 51){
+        newDeck();
+    }
     cardN += 1;
 
     printHand();
@@ -308,6 +330,9 @@ function drawDealer(){
     }
 
     function drawPlayer(){
+        if (cardN === 51){
+            newDeck();
+        }
         cardN += 1;
     
         printHand();
