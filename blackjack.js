@@ -79,6 +79,7 @@ let betAmount = 0;
 let getAmount = 0;
 
 let blackjack = false;
+let disableDouble = false;
 let playerBust = true;
 
 let dHiddencard = true;
@@ -119,6 +120,7 @@ function deal(){
     dAceHand = 0;
 
     blackjack = false;
+    disableDouble = false;
     playerBust = false;
 
     dHiddencard = true;
@@ -146,6 +148,7 @@ function deal(){
 }
 
 function hit() {
+    document.getElementById("double").style.backgroundColor = "#6e6e6e";
     if (roundActive === true) {
     drawPlayer();
         if (pHandVal === 21 || aceHand === 21){
@@ -156,16 +159,20 @@ function hit() {
     else {
         document.getElementById("test").innerHTML = "Press deal to start round";
     }
+    disableDouble = true;
 }
 
 
 function double() {
-    if (roundActive === true){
+    if (roundActive === true && disableDouble === false){
     bet();
 
     hit();
     stand();
     document.getElementById("bank").innerHTML = bank;
+    }
+    if (disableDouble === true) {
+        document.getElementById("test").innerHTML = "Double is disabled. You can not double after your first hit";
     }
     else {
         document.getElementById("test").innerHTML = "Press deal to start round";

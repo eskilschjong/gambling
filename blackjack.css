@@ -24,6 +24,12 @@ html {
     font-weight: bold;
   }
 
+  .flex-container-noFormat {
+    display: flex;
+    flex-wrap: wrap;
+    margin: 0;
+  }
+
   .flex-container-column {
     display: flex;
     flex-wrap: nowrap;
@@ -154,6 +160,9 @@ h2 {
     background: rgb(255, 182, 98);
     color: rgb(128, 68, 0);
     margin-bottom: 2vh;
+    height: 20rem;
+    flex-basis: 6vh;
+    flex-shrink: 0;
 
 }
 
@@ -161,7 +170,6 @@ h2 {
     background: rgb(207, 255, 202);
     color: rgb(7, 65, 0);
     margin-top: 2vh;
-    
 }
 
 .btn {
@@ -187,8 +195,8 @@ h2 {
     text-transform: uppercase;
     font-weight: bold;
     font-size: 0.8rem;
-    width: 20%;
-    left: 80%;
+    width: fit-content;
+    left: 0;
     bottom: 0;
     position: relative;
 }
@@ -218,9 +226,9 @@ label {
     font-family: 'Arial Narrow Bold', sans-serif;
 }
 
-@media only screen and (max-width: 1200px) {
+@media only screen and (max-width: 1000px) {
     #wrapper {
-        width:100%;
+        width:100vw;
         height: 100vh;
         margin:0 auto;
         position:absolute;
@@ -253,8 +261,9 @@ label {
 
     .message {
         width: 80vw;
-        height: 38vh;
         margin-left: 5vw;
+        flex-basis: 5vh;
+        flex-shrink: 0;
     }
 
     .balance {
@@ -262,9 +271,13 @@ label {
         border-radius: 0;
         margin-bottom: 0;
         height: 100%;
-        flex-shrink: 1;
-        border-top: 10px solid rgb(0, 0, 0);;
+        flex-shrink: 4;
+        border-top: 10px solid rgb(0, 0, 0);
         
+    }
+
+    .reset {
+        left: 5vw;
     }
 
     #stand {
@@ -276,6 +289,10 @@ label {
     }
     label {
         margin-left: 5vw;
+        margin-bottom: 2vh;
+    }
+    input {
+        margin-bottom: 2vh;
     }
     .balance-text {
         font-size: 2rem;
@@ -286,5 +303,11 @@ label {
         font-size: 2rem;
         margin-left: 5vw;
         margin-bottom: 5vh;
+    }
+  }
+
+  @media only screen and (max-width: 316px) {
+    #deal {
+        margin-left: 5vw;
     }
   }
