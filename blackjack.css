@@ -1,6 +1,7 @@
 html {
     font-size:16px;
     margin: 0;
+    background: rgb(0, 52, 26);
   }
 
 #wrapper
@@ -11,7 +12,7 @@ html {
  position:absolute;
  left:35%;
  top:0%;
- 
+ color: white;
 
 }
 
@@ -22,7 +23,26 @@ html {
     color: black;
     font-weight: bold;
   }
+
+  .flex-container-column {
+    display: flex;
+    flex-wrap: nowrap;
+    flex-direction: column;
+    margin-bottom: 0;
+    color: black;
+    font-weight: bold;
+  }
+
+.noWrap {
+    flex-wrap: nowrap;
+    align-items: center;
+}
   
+
+.flex-container > button {
+
+    font-size: 0.9rem;
+}  
   .flex-container > div {
     background:  antiquewhite;
     color: black;
@@ -121,11 +141,7 @@ h2 {
 
 
 
-#bet {
-    margin-top: 4vh;
-    margin-bottom: 4vh;
-    margin-left: 2vh;
-}
+
 
 .alert {
     background: antiquewhite;
@@ -138,12 +154,13 @@ h2 {
     background: rgb(255, 182, 98);
     color: rgb(128, 68, 0);
     margin-bottom: 2vh;
-    
+
 }
 
 .balance {
-    background: rgb(255, 252, 159);
-    color: rgb(126, 124, 0);
+    background: rgb(207, 255, 202);
+    color: rgb(7, 65, 0);
+    margin-top: 2vh;
     
 }
 
@@ -156,28 +173,74 @@ h2 {
     text-transform: uppercase;
     font-weight: bold;
     font-size: 1rem;
-    margin-right: 2vh;
+    margin-right: 1vw;
     margin-bottom: 2vh;
+}
+
+.reset {
+    border-radius: 0;
+    margin: 0;
+    background: transparent;
+    color: black;
+    border: 2px solid black;
+    padding: 1em;
+    text-transform: uppercase;
+    font-weight: bold;
+    font-size: 0.8rem;
+    width: 20%;
+    left: 80%;
+    bottom: 0;
+    position: relative;
+}
+
+input {
+    height: 4vh;
+    padding: 0vh;
+    margin: 0;
+    font-size: 1.2rem;
+    width: 50%;
+    text-align: right;
+}
+
+label {
+    margin-right: 1vh;
+    color: white;
+    font-size: 1.2rem;
+}
+
+.balance-text {
+    font-size: 2rem;
+    font-family: 'Arial Narrow Bold', sans-serif;
+}
+
+#bank {
+    font-size: 2rem;
+    font-family: 'Arial Narrow Bold', sans-serif;
 }
 
 @media only screen and (max-width: 1200px) {
     #wrapper {
-        width:80%;
+        width:100%;
+        height: 100vh;
         margin:0 auto;
         position:absolute;
-        left:5%;
+        left:0%;
         top:0%;
     }
     body {
         background: rgb(0,90,3);
         background: linear-gradient(90deg, rgba(0,90,3,1) 0%, rgba(0,135,4,1) 30%, rgba(0,145,4,1) 50%, rgba(0,131,4,1) 70%, rgba(0,90,3,1) 100%);
     }
+    .logo {
+        width: 100vw;
+        height: auto;
+        margin: 0;
+        margin-bottom: 5vh;
+    }
     h1 {
         margin-top: 2vh;
     }
-    #test {
-        height: 10vw;
-    }
+
     #dHandVal
     {
     margin-bottom: 3vh;
@@ -186,5 +249,42 @@ h2 {
     #pHandVal
     {
     margin-bottom: 1vh;
+    }
+
+    .message {
+        width: 80vw;
+        height: 38vh;
+        margin-left: 5vw;
+    }
+
+    .balance {
+        margin-top: 0vh;
+        border-radius: 0;
+        margin-bottom: 0;
+        height: 100%;
+        flex-shrink: 1;
+        border-top: 10px solid rgb(0, 0, 0);;
+        
+    }
+
+    #stand {
+        margin-left: 5vw;
+    }
+
+    table {
+        margin-left: 5vw;
+    }
+    label {
+        margin-left: 5vw;
+    }
+    .balance-text {
+        font-size: 2rem;
+        margin-left: 5vw;
+    }
+    
+    #bank {
+        font-size: 2rem;
+        margin-left: 5vw;
+        margin-bottom: 5vh;
     }
   }

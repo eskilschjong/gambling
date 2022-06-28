@@ -15,8 +15,9 @@
 <body onload="reset();">
 <div class="background"></div>
 <div class="backgroundOpacity"></div>
-<div id="wrapper">
+<div id="wrapper" class="flex-container-column">
 <img class="logo" src="blackjack_logo.png" alt="Blackjack Logo">
+
 <table>
     <tr>
         <td>
@@ -35,43 +36,32 @@
 
 </table>
 
-<table>
-    <tr>
-        <td>
+<div class="flex-container noWrap">
             <button id="stand" class="btn" style="background: rgb(170, 0, 0);" onclick="stand()">Stand</button>
-        </td>
-        <td>
+
             <button id="hit" class="btn" style="background: rgb(9, 186, 0);" onclick="hit()">Hit</button>
-        </td>
-        <td>
+
             <button id="double" class="btn" style="background: blueviolet;" onclick="double()">Double</button>
-        </td>
-    </tr>
-</table>
+
+            <button type="submit" id="deal" class="btn" style="background: rgb(9, 186, 0);" onclick="deal()">Deal</button>
+</div>
 
 
 <div class="alert message" id="test">Press deal to start round</div>
 
-<table>
-    <tr>
-        <td>
-            <button class="btn" style="background: rgb(170, 0, 0);" onclick="reset()">Reset</button>
-        </td>
-        <td>
-            <button type="submit" id="deal" class="btn" style="background: rgb(9, 186, 0);" onclick="deal()">Deal</button>
-        </td>
-    </tr>
-    <tr>
-        <td><label for="bet">Bet amount:</label></td>
+<div class="flex-container noWrap">
+<label for="bet">Bet amount:</label></td>
 
-        <td><input type="text" id="bet" name="Bet amount"></td>
-        <td></td>
-    </tr>
-</table>
-<div class="alert balance">
-<h4>Balance: </h4>
-<h4 id="bank">1000 EC</h4>
+<input type="text" id="bet" name="Bet amount">
+
 </div>
+
+<div class="alert balance">
+<div class="balance-text">Balance: </div>
+<div id="bank">1000 EC</div>
+<button id="reset" class="reset" onclick="reset()">Reset</button>
+</div>
+
 
 </div>
 </body>

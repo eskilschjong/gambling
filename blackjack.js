@@ -283,6 +283,7 @@ function printHand() {
 function drawDealer(){
     if (cardN === 51){
         newDeck();
+        shuffle(deck);
     }
     cardN += 1;
 
@@ -332,6 +333,7 @@ function drawDealer(){
     function drawPlayer(){
         if (cardN === 51){
             newDeck();
+            shuffle(deck);
         }
         cardN += 1;
     
