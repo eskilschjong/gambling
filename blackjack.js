@@ -87,7 +87,7 @@ let dHiddencard = true;
 function bet(){
     getAmount = $("#bet").val();
     betAmount += +getAmount;
-    if (betAmount > bank) {
+    if (getAmount > bank) {
         document.getElementById("test").innerHTML = "Your bet can not be higher than your total balance";
         roundActive = false;
         throw new Error("Bet value exceeds bank value.");
@@ -148,6 +148,7 @@ function deal(){
 }
 
 function hit() {
+    disableDouble = true;
     document.getElementById("double").style.backgroundColor = "#6e6e6e";
     if (roundActive === true) {
     drawPlayer();
@@ -159,12 +160,11 @@ function hit() {
     else {
         document.getElementById("test").innerHTML = "Press deal to start round";
     }
-    disableDouble = true;
 }
 
 
 function double() {
-    if (roundActive === true && disableDouble === false){
+    if (roundActive === true && disableDouble === false && bank >= getAmount){
     bet();
 
     hit();
@@ -173,6 +173,9 @@ function double() {
     }
     if (disableDouble === true) {
         document.getElementById("test").innerHTML = "Double is disabled. You can not double after your first hit";
+    }
+    else if (getAmount > bank) {
+        document.getElementById("test").innerHTML = "Insufficient funds. You may not double";
     }
     else {
         document.getElementById("test").innerHTML = "Press deal to start round";
