@@ -1,0 +1,14 @@
+html {
+    background-color: rgb(30, 0, 31);
+}
+
+#wrapper
+{
+ width:25%;
+ height:100%;
+ margin:0 auto;
+ position:absolute;
+ left:35%;
+ top:0%;
+ color: white;
+}
