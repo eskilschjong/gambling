@@ -84,6 +84,10 @@ let playerBust = true;
 
 let dHiddencard = true;
 
+async function sleep(seconds) {
+    return new Promise((resolve) => setTimeout(resolve, seconds * 1000));
+}
+
 function bet(){
     getAmount = $("#bet").val();
     betAmount += +getAmount;
@@ -96,13 +100,9 @@ function bet(){
     document.getElementById("bank").innerHTML = bank + " EC";
 }
 
-function deal(){
+async function deal(){
     if (roundActive === false) {
-    roundActive = true;
-    document.getElementById("deal").style.backgroundColor = "#6e6e6e";
-    document.getElementById("stand").style.backgroundColor = "rgb(170, 0, 0)";
-    document.getElementById("hit").style.backgroundColor = "rgb(9, 186, 0)";
-    document.getElementById("double").style.backgroundColor = "blueviolet";
+
 
     betAmount = 0;
     bet();
@@ -126,8 +126,13 @@ function deal(){
     dHiddencard = true;
 
     drawPlayer();
+    await sleep(1);
     drawDealer();
+    document.getElementById("dHand").innerHTML = "<h5>?</h5>";
+    document.getElementById("dHandVal").innerHTML = "0";
+    await sleep(1);
     drawPlayer();
+    await sleep(1);
     drawDealer();
     
     printHand();
@@ -144,6 +149,11 @@ function deal(){
         blackjack = true;
         stand();
     }
+    roundActive = true;
+    document.getElementById("deal").style.backgroundColor = "#6e6e6e";
+    document.getElementById("stand").style.backgroundColor = "rgb(170, 0, 0)";
+    document.getElementById("hit").style.backgroundColor = "rgb(9, 186, 0)";
+    document.getElementById("double").style.backgroundColor = "blueviolet";
 }
 }
 
@@ -182,8 +192,12 @@ function double() {
     }
 }
 
-function stand() {
+async function stand() {
     if (roundActive === true){
+        roundActive = false;
+        document.getElementById("stand").style.backgroundColor = "#6e6e6e";
+        document.getElementById("hit").style.backgroundColor = "#6e6e6e";
+        document.getElementById("double").style.backgroundColor = "#6e6e6e";
     if (aceHand < 22 && ace === true) {
         pHandVal = aceHand;
         document.getElementById("pHandVal").innerHTML = pHandVal;
@@ -197,6 +211,7 @@ function stand() {
         dHandVal = dAceHand;
     }
     while (dHandVal < 17) {
+        await sleep(1);
     drawDealer();
     if (dAceHand === 21) {
         dHandVal = dAceHand;
@@ -213,7 +228,6 @@ else {
 
 
 function results() {
-    roundActive = false;
     document.getElementById("dHandVal").innerHTML = dHandVal;
     if (dHandVal > 21){
         document.getElementById("dHandVal").innerHTML = "BUST";
@@ -244,10 +258,7 @@ function results() {
     else if (dHandVal > pHandVal || playerBust === true) {
         document.getElementById("test").innerHTML = "You lose! " + betAmount + " eskil-coins removed from balance!";
     }
-    document.getElementById("deal").style.backgroundColor = "rgb(9, 186, 0)"
-    document.getElementById("stand").style.backgroundColor = "#6e6e6e";
-    document.getElementById("hit").style.backgroundColor = "#6e6e6e";
-    document.getElementById("double").style.backgroundColor = "#6e6e6e";
+    document.getElementById("deal").style.backgroundColor = "rgb(9, 186, 0)";
     throw new Error("Program has finsished");
 }
 
