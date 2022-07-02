@@ -264,7 +264,11 @@ function results() {
         document.getElementById("test").innerHTML = "You lose! " + betAmount + " eskil-coins removed from balance!";
     }
     document.getElementById("deal").style.backgroundColor = "rgb(9, 186, 0)";
+    document.getElementById("stand").style.backgroundColor = "#6e6e6e";
+    document.getElementById("hit").style.backgroundColor = "#6e6e6e";
+    document.getElementById("double").style.backgroundColor = "#6e6e6e";
     resetEnabled = true;
+    roundActive = false;
     throw new Error("Program has finsished");
 }
 
