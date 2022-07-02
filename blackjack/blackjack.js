@@ -5,6 +5,7 @@ function Card (suit, rank) {
 const deck = [];
 
 function reset(){
+    if (resetEnabled === true) {
     document.getElementById("dHand").innerHTML = "<div></div>";
     document.getElementById("pHand").innerHTML = "<div></div>";
 
@@ -44,6 +45,7 @@ function newDeck(){
         }
     }
 }
+}
 
 function shuffle(){
     const shuffleDeck = deck => {
@@ -59,6 +61,7 @@ function shuffle(){
 }
 
 let roundActive = false;
+let resetEnabled = true;
 
 let cardN = 0;
 let bank = 1000;
@@ -102,7 +105,7 @@ function bet(){
 
 async function deal(){
     if (roundActive === false) {
-
+    resetEnabled = false;
 
     betAmount = 0;
     bet();
@@ -147,6 +150,7 @@ async function deal(){
 
     if (pHandVal === 21 || aceHand === 21){
         blackjack = true;
+        roundActive = true;
         stand();
     }
     roundActive = true;
@@ -158,9 +162,9 @@ async function deal(){
 }
 
 function hit() {
-    disableDouble = true;
-    document.getElementById("double").style.backgroundColor = "#6e6e6e";
     if (roundActive === true) {
+        disableDouble = true;
+        document.getElementById("double").style.backgroundColor = "#6e6e6e";
     drawPlayer();
         if (pHandVal === 21 || aceHand === 21){
             document.getElementById("dHandVal").innerHTML = "21";
@@ -207,6 +211,7 @@ async function stand() {
     }
     dHiddencard = false;
     document.getElementById("dHand").innerHTML = dHand;
+    document.getElementById("dHandVal").innerHTML = dHandVal;
     if (dAceHand === 21) {
         dHandVal = dAceHand;
     }
@@ -259,6 +264,7 @@ function results() {
         document.getElementById("test").innerHTML = "You lose! " + betAmount + " eskil-coins removed from balance!";
     }
     document.getElementById("deal").style.backgroundColor = "rgb(9, 186, 0)";
+    resetEnabled = true;
     throw new Error("Program has finsished");
 }
 
