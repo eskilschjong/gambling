@@ -25,6 +25,7 @@ function reset(){
     newDeck();
     shuffle(deck);
 }
+}
 
 function newDeck(){
     cardN = 0;
@@ -45,7 +46,7 @@ function newDeck(){
         }
     }
 }
-}
+
 
 function shuffle(){
     const shuffleDeck = deck => {
